@@ -21,4 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+*
+Run Bundle install 
+
+rails db:migrate
+
+rails db:seed
+
+rails server
