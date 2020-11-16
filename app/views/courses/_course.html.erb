@@ -1,0 +1,18 @@
+<tr>
+  <td>
+      <%= course.name %>
+  </td>
+  <td>
+      <%= course.created_at %>
+  </td>
+  <td>
+      <%= course.updated_at %>
+  </td>
+  <td>
+    <%= link_to 'View', course, id: course.id %>
+    <% if teacher_user? %>
+      <%= link_to 'Edit', controller: "courses", action: "edit", id: course.id  %>
+      <%= link_to 'Delete', course, :method => "delete", :confirm=>"Are you sure?" %>
+    <% end %>
+  </td>
+</tr>

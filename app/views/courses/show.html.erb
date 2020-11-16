@@ -1,0 +1,39 @@
+<h1>Course</h1>
+<div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <td>:</td>
+      <td><%= @course.name %></td>
+    </tr>
+    <tr>
+      <th>Owner</th>
+      <td>:</td>
+      <td><%= current_user.username %></td>
+    </tr>
+
+    <tr>
+      <th>Created At</th>
+      <td>:</td>
+      <td><%= @course.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated At</th>
+      <td>:</td>
+      <td><%= @course.updated_at %></td>
+    </tr>
+    <tr>
+      <th>No of Assignments</th>
+      <td>:</td>
+      <td><%= @course.assignments.length %></td>
+    </tr>
+  </table>
+  <br>
+    <%= link_to "Assignments", controller: "assignments", action: "list_for_course", id: @course.id %>
+
+    <%= link_to 'Add Assignment', controller: "assignments", action: "new", id: @course.id %>
+
+    <%= link_to 'Back', :back %>
+  <br>
+
+</div>

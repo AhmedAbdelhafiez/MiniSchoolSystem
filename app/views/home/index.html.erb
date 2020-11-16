@@ -1,0 +1,21 @@
+<h1>Home</h1>
+
+<div>
+    <% if logged_in? %>
+      <ul>
+          <% if teacher_user? %>
+            <li>
+              <%= link_to "Courses", courses_list_path %>
+            </li>
+          <% end %>
+          <% if student_user? %>
+            <li>
+              <%= link_to "Assignments", assignments_list_path %>
+            </li>
+          <% end %>
+      </ul>
+    <% else %>
+      You must log in
+      <%= link_to 'Log in', login_path %>
+    <% end %>
+</div>

@@ -1,0 +1,31 @@
+<h1>Profile</h1>
+<table>
+    <tr>
+      <th>UserName </th>
+      <td></td>
+      <td> <%= @user.username %></td>
+    </tr>
+
+    <tr>
+      <th>Full Name </th>
+      <td></td>
+      <td><%= @user.fullname %></td>
+    </tr>
+
+    <tr>
+      <th>DateOfBirth </th>
+      <td></td>
+      <td><%= @user.dateOfBirth %></td>
+    </tr>
+
+    <tr>
+      <th>Type </th>
+      <td></td>
+      <td>
+        <%= @profile_type %>
+      </td>
+    </tr>
+
+</table>
+
+<%= link_to 'Back', :back %>
