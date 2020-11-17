@@ -1,14 +1,19 @@
 class CoursesController < ApplicationController
 
-  before_action :logged_in_user
+  before_action :logged_in_user, except: :list
+
+  def index
+    @courses = Course.all
+  end
 
   def list
     @courses ||= []
 
-    @teacher = Teacher.find_by(user_id: current_user.id)
+    #@teacher = Teacher.find_by(user_id: current_user.id)
 
-    @courses = Course.where("teacher_id = ?", @teacher.id)
-
+    #@courses = Course.where("teacher_id = ?", @teacher.id)
+    @courses = Course.all
+    #debugger
   end
 
   def show
@@ -41,6 +46,7 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(course_params[:id])
+    debugger
     if @course.update_attributes(course_params)
       flash[:success] = "Course updated!"
       redirect_to @course

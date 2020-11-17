@@ -1,6 +1,11 @@
 class AssignmentsController < ApplicationController
 
-  before_action :logged_in_user
+  before_action :logged_in_user, only: [:create, :update]
+
+  def index
+    @assignments = Assignment.all
+  end
+
 
   def list
     @assignments = []
@@ -14,7 +19,6 @@ class AssignmentsController < ApplicationController
       @assignments = Assignment.where("student_id = ?", @student.id)
     end
   end
-
 
   def list_for_course
     @course = Course.find(params[:id])
