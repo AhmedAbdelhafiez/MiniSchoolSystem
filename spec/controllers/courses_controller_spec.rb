@@ -61,7 +61,7 @@ RSpec.describe CoursesController, type: :controller do
 
       course_params = { id: @course.id, course: { name: 'updated', id: @course.id} }
       #debugger
-      put 'update', params: course_params
+      put :update, params: course_params
       expect(response.status).to be(302)
 
       #expect(JSON.parse(response.body)['name']).to eq('test_course')

@@ -52,7 +52,7 @@ RSpec.describe AssignmentsController, type: :controller do
 
       assignment_params = { id: @assignment.id, assignment: { name: 'updated', id: @assignment.id} }
       #debugger
-      put 'update', params: assignment_params
+      put :update, params: assignment_params
       expect(response.status).to be(302)
 
     end
