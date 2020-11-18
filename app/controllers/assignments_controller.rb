@@ -15,6 +15,7 @@ class AssignmentsController < ApplicationController
     else
       @user = current_user
       @student = Student.find_by(user_id: @user.id)
+      #debugger
       @assignments = Assignment.where("student_id = ?", @student.id)
     end
   end
@@ -50,7 +51,7 @@ class AssignmentsController < ApplicationController
     @assignment.course_id = assignment_params[:course_id]
     if @assignment.save
         flash.now[:success] = "Assignment Successfully saved"
-        list_for_course
+        list
     else
         flash.now[:danger] = "Assignment Not Saved"
         render 'new'
