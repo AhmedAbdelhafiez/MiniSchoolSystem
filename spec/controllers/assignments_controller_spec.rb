@@ -53,7 +53,9 @@ RSpec.describe AssignmentsController, type: :controller do
       assignment_params = { id: @assignment.id, assignment: { name: 'updated', id: @assignment.id} }
       #debugger
       put :update, params: assignment_params
+      @updatedAssignment = Assignment.find(@assignment.id)
       expect(response.status).to be(302)
+      expect(@updatedAssignment.name).to eq(@new_name)
 
     end
   end

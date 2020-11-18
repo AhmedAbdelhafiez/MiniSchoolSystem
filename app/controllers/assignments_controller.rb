@@ -6,7 +6,6 @@ class AssignmentsController < ApplicationController
     @assignments = Assignment.all
   end
 
-
   def list
     @assignments = []
     if teacher_user?
@@ -49,12 +48,9 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(assignment_params)
     @assignment.course_id = assignment_params[:course_id]
-    @course = Course.find(assignment_params[:course_id])
-    #debugger
     if @assignment.save
         flash.now[:success] = "Assignment Successfully saved"
-        list
-        redirect_to @course
+        list_for_course
     else
         flash.now[:danger] = "Assignment Not Saved"
         render 'new'

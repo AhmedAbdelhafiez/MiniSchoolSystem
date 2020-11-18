@@ -44,10 +44,13 @@ RSpec.describe CoursesController, type: :controller do
 
   context 'Post #create' do
     it 'returns a success response' do
+      @courseName = 'testCourse'
+      course_params = { id: nil, course: { name: @courseName, id: nil} }
+      post :create, params:course_params
       expect(response.body).to be_truthy
-      expect(response.status).to be(200)
-      #debugger
-      #expect(JSON.parse(response.body)['name']).to eq('test_course')
+      expect(response.status).to be(302)
+      @course = Course.find_by(name: @courseName)
+      expect(@course).to be_truthy
     end
   end
 
@@ -58,11 +61,12 @@ RSpec.describe CoursesController, type: :controller do
       #course_params[:name] = "updated";
       @course = Course.create!(name: "test")
       @new_name = "updated"
-
       course_params = { id: @course.id, course: { name: 'updated', id: @course.id} }
       #debugger
       put :update, params: course_params
+      @updatedCourse = Course.find(@course.id)
       expect(response.status).to be(302)
+      expect(@updatedCourse.name).to eq(@new_name)
 
       #expect(JSON.parse(response.body)['name']).to eq('test_course')
     end
