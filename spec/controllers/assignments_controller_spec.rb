@@ -46,9 +46,15 @@ RSpec.describe AssignmentsController, type: :controller do
   context 'Post #update' do
     it 'returns a success response' do
       assignment_params = { id: 1, name: "updated", student_id: student.id}
-      put :delete, params: {id: assignment.id, name: "updated"}
 
-      expect(response.status).to be(200)
+      @assignment = Assignment.create!(name: "test")
+      @new_name = "updated"
+
+      assignment_params = { id: @assignment.id, assignment: { name: 'updated', id: @assignment.id} }
+      #debugger
+      put 'update', params: assignment_params
+      expect(response.status).to be(302)
+
     end
   end
 

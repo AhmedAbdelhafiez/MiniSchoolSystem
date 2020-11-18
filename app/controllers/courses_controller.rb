@@ -46,7 +46,6 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(course_params[:id])
-    debugger
     if @course.update_attributes(course_params)
       flash[:success] = "Course updated!"
       redirect_to @course

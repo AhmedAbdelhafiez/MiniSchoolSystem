@@ -23,7 +23,6 @@ RSpec.describe CoursesController, type: :controller do
 
   context 'GET #list' do
     it 'returns a success response' do
-
       get :list
       #debugger
       expect(response.body).to be_truthy
@@ -57,13 +56,13 @@ RSpec.describe CoursesController, type: :controller do
       #course_params = Hash.new
       #course_params.require(:course).permit(:id, :name, :teacher_id)
       #course_params[:name] = "updated";
-      course_params = { id: 1, name: "updated", teacher_id: teacher.id}
+      @course = Course.create!(name: "test")
+      @new_name = "updated"
+
+      course_params = { id: @course.id, course: { name: 'updated', id: @course.id} }
       #debugger
-      #post :update, params: course_params
-
-      put :delete, params: {id: course.id, name: "updated"}
-
-      expect(response.status).to be(200)
+      put 'update', params: course_params
+      expect(response.status).to be(302)
 
       #expect(JSON.parse(response.body)['name']).to eq('test_course')
     end
