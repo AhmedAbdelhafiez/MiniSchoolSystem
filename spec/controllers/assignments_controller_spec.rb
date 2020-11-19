@@ -38,15 +38,13 @@ RSpec.describe AssignmentsController, type: :controller do
 
   context 'Post #create' do
     it 'returns a success response' do
-      #@assignmentName = 'testAssignment'
-      #@student = Student.create!(user_id: 1, calssNo: 1)
-      #assignment_params = { id: nil, assignment: { name: @assignmentName, id: nil, student_id: @student.id, course_id: nil} }
+      @assignment_name = 'testAssignment'
+      @student = Student.create!(user_id: 1, classNo: 1)
+      assignment_params = { id: nil, assignment: { name: @assignmentName, id: nil, student_id: @student.id, course_id: nil} }
 
-      #post :create, params:assignment_params
       expect(response.body).to be_truthy
+      post :create, params:assignment_params
       expect(response.status).to be(200)
-      #@assignment = Assignment.find_by(name: @assignmentName)
-      #expect(@assignment).to be_truthy
     end
   end
 
