@@ -69,6 +69,8 @@ end
 
 gem 'ruby-kafka'
 
+gem "pg", "~> 1.2"
+
 gem 'delivery_boy'
 
 gem 'racecar'
