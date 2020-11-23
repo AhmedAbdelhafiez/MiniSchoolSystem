@@ -30,14 +30,8 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    DeliveryBoy.deliver_async(course_params.to_json, topic: "courses")
 
-    if @course.save
-        flash[:success] = "Course Successfully saved"
-        redirect_to courses_list_url
-    else
-        flash[:danger] = "Course Not saved due to empty name"
-        render 'new'
-    end
   end
 
   def edit

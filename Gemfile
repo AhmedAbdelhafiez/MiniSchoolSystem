@@ -66,3 +66,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'database_cleaner'
 end
+
+gem 'ruby-kafka'
+
+gem 'delivery_boy'
+
+gem 'racecar'
